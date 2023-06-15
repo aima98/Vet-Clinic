@@ -18,10 +18,6 @@ SELECT * FROM animals;
 ROLLBACK;
 SELECT * FROM animals;
 
--- Setting species column to 'digimon' for all animals ending with 'mon'
--- Setting species column to pokemon for all animals with no species set
--- Verifying changes and commit transaction
-
 BEGIN TRANSACTION;
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
 UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
@@ -29,21 +25,10 @@ SELECT * FROM animals;
 COMMIT;
 SELECT * FROM animals;
 
--- Deleting all records in animals table
--- Rolling back
--- Verifying that records exist
-
 BEGIN TRANSACTION;
 DELETE FROM animals;
 ROLLBACK;
 SELECT * FROM animals;
-
-
--- Deleting all animals born after '2022-01-01
--- Adding save point'
--- Multiplying animal by -1
--- Rolling back to save point
--- Multiplying negative animals by -1
 
 BEGIN TRANSACTION;
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
